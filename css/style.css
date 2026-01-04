@@ -1,0 +1,2929 @@
+
+@font-face {
+  font-family: 'CCUltimatum';
+  src: url('../assets/fonts/CCUltimatum-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'CCUltimatum';
+  src: url('../assets/fonts/CCUltimatum-Heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --bg: #0b0c10;
+  --text:#e9ecf1;
+  --muted:#b7bfcc;
+  --border: #d4af37;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container{
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* фон */
+.hero-bg{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(11,12,16,.85) 0%,
+      rgba(11,12,16,.45) 45%,
+      rgba(11,12,16,.9) 100%
+    ),
+    url("../assets/images/hero-bg.jpg") center / cover no-repeat;
+  filter: grayscale(100%) contrast(1.15);
+  z-index: 1;
+}
+
+/* контент */
+.hero-content{
+  position: relative;
+  z-index: 3; /* ← ВАЖНО: ВЫШЕ ГРАДИЕНТА */
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+  text-align: center;
+}
+
+.brand{
+  font-weight: 700;
+  font-size: 16px;
+  opacity: .9;
+}
+
+.hero-title{
+  margin: 12px 0 8px;
+  font-size: clamp(64px, 18vw, 140px);
+  line-height: .9;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  margin-right: -16px;
+
+  white-space: nowrap;
+}
+
+.hero-subtitle{
+font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.3;
+  max-width: 680px;
+  margin: 14px auto 0;
+  opacity: .9;
+  text-align: center;
+}
+
+/* низ hero */
+.hero-bottom{
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.hero-tagline{
+  font-size: clamp(16px, 3.6vw, 20px);
+  opacity: .9;
+}
+
+/* =========================
+   HERO BUTTON
+========================= */
+
+.hero-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 28px;
+
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #111;
+
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 0;              /* ← БЕЗ СКРУГЛЕНИЙ */
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.6);
+
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+
+.hero-btn:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* =========================
+   HERO → NEXT BLOCK FADE
+========================= */
+
+.hero-fade{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 180px;
+  z-index: 2; /* ← МЕЖДУ ФОНОМ И ТЕКСТОМ */
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(11,12,16,0) 0%,
+    rgba(11,12,16,.45) 40%,
+    rgba(11,12,16,.75) 70%,
+    #0b0c10 100%
+  );
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+  padding: 80px 0;
+}
+
+.section-dark{
+  background: #0b0c10;
+  color: #ffffff;
+}
+
+/* =========================
+   SAFE AREA (iPhone)
+========================= */
+
+@supports (padding: max(0px)){
+  .hero-content{
+    padding-top: calc(6vh + env(safe-area-inset-top));
+    padding-bottom: calc(6vh + env(safe-area-inset-bottom));
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px){
+  .hero-title{
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+}
+/* =========================
+   ABOUT (CENTERED, COMPACT)
+========================= */
+
+.about{
+  padding: 40px 0; /* было 80px → уменьшили вдвое */
+}
+
+.about-wrap{
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.about-title{
+  font-size: clamp(26px, 4.5vw, 36px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: -.02em;
+}
+
+.about-main{
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 18px;
+  opacity: .9;
+}
+
+.about-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+
+  text-align: left;
+  width: 100%;
+}
+
+
+.about-list li{
+  font-size: 15px;
+  padding: 8px 0;
+  text-transform: uppercase; /* ← ЗАГЛАВНЫЕ */
+  letter-spacing: .06em;
+  opacity: .85;
+  border-bottom: 1px solid #d4af37;
+}
+
+
+.about-note{
+  font-size: 15px;
+  opacity: .7;
+}
+/* =========================
+   COURSE — WHAT WILL BE
+========================= */
+
+.course{
+  padding: 48px 0; /* компактно */
+}
+
+.course-wrap{
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.course-title{
+  text-align: center;
+  font-size: clamp(26px, 4.5vw, 36px);
+  font-weight: 800;
+  margin-bottom: 28px;
+  letter-spacing: -.02em;
+}
+
+.course-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  text-align: left;
+}
+
+.course-list li{
+  font-size: clamp(18px, 4vw, 26px); /* большие */
+  padding: 14px 0;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid #d4af37;
+}
+/* =========================
+   MODULES (ACCORDION)
+========================= */
+
+.modules{
+  padding: 48px 0;
+}
+
+.modules-wrap{
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.modules-title{
+  text-align: center;
+  font-size: clamp(26px, 4.5vw, 36px);
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.modules-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.module{
+  border-bottom: 1px solid #d4af37;
+}
+
+.module-head{
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 18px 0;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: #fff;
+  text-align: left;
+}
+
+.module-num{
+  font-size: 14px;
+  letter-spacing: .12em;
+  opacity: .6;
+}
+
+.module-name{
+  font-size: clamp(18px, 4vw, 26px);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.module-body{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+}
+
+.module-body ul{
+  list-style: none;
+  padding: 0 0 18px;
+  margin: 0;
+}
+
+.module-body li{
+  padding: 8px 0;
+  font-size: 15px;
+  letter-spacing: .06em;
+  opacity: .85;
+  text-transform: uppercase;
+}
+
+/* active */
+.module.active .module-body{
+  max-height: 400px;
+}
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews{
+  padding: 48px 0;
+}
+
+.reviews-wrap{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.reviews-title{
+  text-align: center;
+  font-size: clamp(26px, 4.5vw, 36px);
+  font-weight: 800;
+  margin-bottom: 32px;
+}
+
+.review{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #d4af37;
+}
+
+.review-photo{
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.review-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.05);
+}
+
+.review-content{
+  flex: 1;
+}
+
+.review-text{
+  font-size: 16px;
+  line-height: 1.45;
+  opacity: .9;
+  margin-bottom: 8px;
+}
+
+.review-author{
+  font-size: 14px;
+  opacity: .6;
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .review{
+    gap: 14px;
+  }
+
+  .review-photo{
+    width: 72px;
+    height: 72px;
+  }
+}
+/* =========================
+   FEATURED REVIEW (APPLE STYLE)
+========================= */
+
+.review-feature{
+  background: #f4f4f2;        /* светлый фон */
+  color: #0b0c10;
+  padding: 80px 0;
+}
+
+.review-feature-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.review-feature-media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.review-feature-text{
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.35;
+  margin-bottom: 24px;
+}
+
+.review-feature-text strong{
+  font-weight: 800;
+}
+
+.review-feature-author{
+  font-size: 16px;
+  opacity: .65;
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .review-feature-wrap{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+/* =========================
+   REVIEWS — FINAL FIX
+========================= */
+
+.review-row{
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid #d4af37;
+  align-items: stretch;
+}
+
+/* квадрат фото */
+.review-image{
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.review-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* текст = высота фото */
+.review-text{
+  height: 160px;                 /* ← КЛЮЧ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.review-text p{
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.review-author{
+  font-size: 13px;
+  opacity: .6;
+}
+
+/* MOBILE — 50 / 50 */
+@media (max-width: 640px){
+  .review-row{
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 20px 0;
+  }
+
+  .review-image{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .review-text{
+    height: auto;
+    aspect-ratio: 1 / 1;          /* ← текст в ровень фото */
+    justify-content: center;
+  }
+
+}
+
+
+
+/* =========================
+   REVIEWS — DESKTOP: 3 колонки × 2 отзыва (6 карточек)
+   Мобилку не трогаем (2 + кнопка «Показать ещё»)
+========================= */
+.reviews-grid{
+  display: block;
+}
+
+@media (min-width: 901px){
+  /* 3 колонки карточек */
+  .reviews-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  /* раскрываем контейнер, чтобы отзывы внутри участвовали в grid */
+  .reviews-hidden{
+    display: contents !important;
+  }
+
+  /* на десктопе оставляем ровно 6 отзывов (2 первых + 4 из скрытых) */
+  .reviews-hidden .review-row:nth-child(n+5){
+    display: none !important;
+  }
+
+  /* убираем кнопку «показать ещё» на десктопе */
+  .reviews-toggle{
+    display: none !important;
+  }
+
+  /* карточка-«прямоугольник» */
+  .review-row{
+    padding: 18px !important;
+    border: 1px solid rgba(255,255,255,.15);
+    border-bottom: none;
+    align-items: center;
+    grid-template-columns: 120px 1fr;
+    gap: 18px;
+  }
+
+  .review-image{
+    width: 120px;
+    height: 120px;
+  }
+
+  .review-text{
+    height: auto;
+    overflow: visible;
+  }
+}
+.footer{
+  padding: 24px 0;
+  border-top: 1px solid #d4af37;
+}
+
+.footer-inner{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  opacity: .6;
+}
+/* =========================
+   FAQ
+========================= */
+
+.faq{
+  padding: 80px 0;
+}
+
+.faq-wrap{
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+.faq-title{
+  text-align: center;
+  font-size: clamp(32px, 8vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+
+.faq-list{
+  border-top: 1px solid rgba(255,255,255,.15);
+}
+
+.faq-item{
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.faq-question{
+  width: 100%;
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 20px 0;
+  cursor: pointer;
+
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  gap: 16px;
+  align-items: center;
+
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ===== FAQ ICON ===== */
+
+.faq-plus{
+  width: 26px;
+  height: 26px;
+  background: #fff;          /* БЕЛЫЙ КВАДРАТ */
+  position: relative;
+  flex-shrink: 0;
+}
+
+.faq-plus::before,
+.faq-plus::after{
+  content: "";
+  position: absolute;
+  background: #000;          /* ЧЁРНЫЙ ПЛЮС */
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.faq-plus::before{
+  width: 14px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.faq-plus::after{
+  width: 2px;
+  height: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== FAQ ANSWER ANIMATION ===== */
+
+.faq-answer{
+  height: 0;
+  overflow: hidden;
+  transition: height .45s ease;
+  font-size: 16px;
+  line-height: 1.45;
+  opacity: .9;
+  padding-right: 40px;
+}
+
+/* active state */
+.faq-item.active .faq-answer{
+  opacity: .9;
+  transform: translateY(0);
+  margin-bottom: 16px;
+}
+
+.faq-item.active .faq-plus::after{
+  opacity: 0;               /* + превращается в − */
+}
+
+
+/* active */
+.faq-item.active .faq-answer{
+  margin-bottom: 16px;
+}
+
+.faq-item.active .faq-plus::after{
+  display: none; /* превращаем + в − */
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .faq-question{
+    font-size: 16px;
+  }
+}
+/* ===== REMOVE CLICK HIGHLIGHT ===== */
+
+.faq-question{
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faq-question:focus{
+  outline: none;
+}
+/* ===== REMOVE CLICK HIGHLIGHT ===== */
+
+.faq-question{
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faq-question:focus{
+  outline: none;
+}
+/* =========================
+   REMOVE CLICK / TAP HIGHLIGHT (GLOBAL)
+========================= */
+
+/* Убираем синие подсветки на мобилке */
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Убираем focus/outline со всех кликабельных */
+a,
+button,
+input,
+textarea,
+select,
+[role="button"],
+[tabindex]{
+  outline: none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus{
+  outline: none;
+}
+/* =========================
+   PRESS EFFECT (GLOBAL)
+========================= */
+
+/* все кликабельные */
+a,
+button,
+[role="button"]{
+  transition:
+    transform .08s ease,
+    box-shadow .08s ease,
+    opacity .08s ease;
+}
+
+/* эффект нажатия */
+a:active,
+button:active,
+[role="button"]:active{
+  transform: scale(0.97);
+  opacity: .85;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.price-card {
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 20px;
+  background: transparent;
+}
+
+.price-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.price-card ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+}
+
+.price-card li {
+  margin: 6px 0;
+}
+
+.btn-full {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.btn-white {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  background: #ffffff;
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #ffffff;
+  transition: opacity .15s ease;
+}
+
+.btn-white:hover {
+  opacity: 0.85;
+}
+a {
+  text-decoration: none;
+}
+.reviews .section-title {
+  text-align: center;
+}
+.section {
+  margin-bottom: 25px;
+}
+
+
+/* === GLOBAL FIXES === */
+* {
+  border-radius: 0 !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Sections spacing */
+.section,
+.about,
+.course,
+.modules,
+.reviews,
+.faq,
+.pricing {
+  padding: 25px 0 !important;
+  margin: 0 !important;
+}
+
+/* Modules typography */
+.modules h3 {
+  font-size: 20px !important;
+}
+.modules p,
+.modules li {
+  font-size: 18px !important;
+  line-height: 1.5;
+}
+
+/* Reviews & Pricing titles */
+.reviews .section-title,
+.pricing .section-title {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* Reviews spacing */
+.review-row {
+  padding: 25px 0 !important;
+  gap: 25px !important;
+}
+
+/* Pricing cards */
+.price-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-card a {
+  margin-top: auto;
+}
+
+/* White rectangular button */
+.btn-white {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  background: #ffffff;
+  color: #000000;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid #ffffff;
+  text-decoration: none;
+}
+
+.btn-white:hover {
+  opacity: 0.85;
+}
+
+/* FANFLOW — стеклянные буквы */
+.hero-title{
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,255,255,0.35) 35%,
+    rgba(255,255,255,0.85) 70%,
+    rgba(255,255,255,0.55) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* лёгкий «объём» и читаемость на тёмном фоне */
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.35),
+    0 10px 25px rgba(0,0,0,0.25);
+
+  /* небольшой “блик” */
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.12));
+}
+.hero-title{
+  -webkit-text-stroke: 1px rgba(255,255,255,0.18);
+}
+/* === GLOBAL NOISE BACKGROUND (EXCEPT HERO) === */
+
+/* === GLOBAL NOISE BACKGROUND (EXCEPT HERO) === */
+
+html,
+body{
+  background-color: #0b0b0b !important;
+}
+
+body{
+  background-image: url("../assets/images/noise.jpg") !important;
+  background-repeat: repeat !important;
+  background-position: 0 0 !important;
+  background-size: auto !important;
+}
+
+/* убираем любые фоны у секций */
+.section,
+.about,
+.course,
+.modules,
+.reviews,
+.pricing,
+.faq,
+.container,
+main,
+header,
+footer{
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* первый экран чистый */
+.hero{
+  background-color: #0b0b0b !important;
+  background-image: none !important;
+}
+/* === REMOVE GLASS TEXT EFFECT === */
+
+.hero-title{
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+/* === HEADINGS FONT === */
+
+h1, h2, h3, h4, h5, h6,
+.section-title {
+  font-family: "Brushstrike", sans-serif;
+  letter-spacing: 0.02em;
+}
+/* FANFLOW stays clean */
+.hero-title {
+  font-family: inherit !important;
+  letter-spacing: normal;
+}
+h1,h2,h3,h4,h5,h6,.section-title{
+  font-family: "Brushstrike", sans-serif !important;
+}
+
+/* =========================
+   FOOTER BACKGROUND + FADE
+   (placed at the very end to override global background resets)
+========================= */
+
+.footer.footer--bg{
+  position: relative;
+  overflow: hidden;
+  background: #000 !important;
+
+  /* меньше высота картинки/футера (в 2 раза компактнее) */
+  min-height: 260px;
+
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Фон-картинка + градиент к ВЕРХУ:
+   в центре/ниже — прозрачно, сверху — уходит в чёрный */
+.footer.footer--bg::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      #000 0%,
+      rgba(0,0,0,0.85) 28%,
+      rgba(0,0,0,0.35) 45%,
+      rgba(0,0,0,0) 70%
+    ),
+    url("../assets/images/footer-bg.png");
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: top center, center;
+  background-size: 100% 100%, cover;
+
+  opacity: 0.95;
+  z-index: 0;
+}
+
+/* Контент поверх */
+.footer.footer--bg .footer-inner{
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  padding: 28px 0 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  opacity: 1 !important;
+}
+
+.footer.footer--bg .footer-copy{
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.footer.footer--bg .footer-slogan{
+  opacity: 0.85;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* === FORCE REMOVE BRUSHSTRIKE === */
+h1,h2,h3,h4,h5,h6,
+.section-title,
+.hero-title{
+  font-family: inherit !important;
+  letter-spacing: normal !important;
+}
+/* Modules accordion (use same look as FAQ) */
+.modules-accordion .faq-question{
+  width: 100%;
+  text-align: left;
+}
+
+.modules-accordion .module-list{
+  margin: 0;
+  padding-left: 18px;
+}
+
+.modules-accordion .module-list li{
+  margin: 6px 0;
+}
+/* === MODULES: EXACT SAME PLUS BOX AS FAQ (NO HTML CHANGES) === */
+
+.modules-accordion .faq-question{
+  /* сохраняем твой FAQ-лайаут; на всякий */
+  display: grid;
+  grid-template-columns: 1fr 26px;
+  gap: 16px;
+  align-items: center;
+}
+
+/* белый квадрат справа */
+.modules-accordion .faq-question::after{
+  content: "";
+  width: 26px;
+  height: 26px;
+  justify-self: end;
+  background-color: #fff;
+
+  /* рисуем плюс как в FAQ: чёрные линии 14x2 и 2x14 */
+  background-image:
+    linear-gradient(#000,#000), /* горизонтальная */
+    linear-gradient(#000,#000); /* вертикальная */
+  background-size:
+    14px 2px,
+    2px 14px;
+  background-position:
+    center,
+    center;
+  background-repeat: no-repeat;
+}
+
+/* active: превращаем + в − (убираем вертикальную линию) */
+.modules-accordion .faq-item.active .faq-question::after{
+  background-image: linear-gradient(#000,#000);
+  background-size: 14px 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* === MODULES: FIX TEXT WRAP / HEIGHT === */
+
+.modules-accordion .faq-question{
+  height: auto !important;
+  white-space: normal !important;
+  line-height: 1.25;
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  /* важно: чтобы колонка текста реально сжималась и переносилась */
+  grid-template-columns: minmax(0, 1fr) 26px;
+}
+
+/* иногда текстовый узел в button не сжимается — фикс */
+.modules-accordion .faq-question{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+/* === MODULES: FIX CUT TEXT IN ACCORDION HEADER === */
+
+.modules-accordion .faq-question{
+  height: auto !important;
+  min-height: 56px;              /* чтобы 1 строка выглядела ровно */
+  white-space: normal !important;
+  overflow: visible !important;  /* важно: не обрезать */
+  text-overflow: unset !important;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 26px;
+  align-items: start;            /* плюс и текст сверху */
+  gap: 16px;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* плюс-квадрат чуть опускаем, чтобы визуально был по центру первой строки */
+.modules-accordion .faq-question::after{
+  margin-top: 2px;
+}
+.modules-accordion .faq-item{
+  height: auto !important;
+}
+
+
+
+/* === PRICING TIERS (UPDATED) === */
+.price-sub{
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.price-note{
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.price-card.featured{
+  border-color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.04);
+  position: relative;
+}
+
+.price-badge{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.25);
+  color: var(--text);
+}
+
+.reviews p{font-size:14px; line-height:1.4;}
+
+/* FIX reviews text size */
+.review-text p{
+  font-size: 14px;
+  line-height: 1.4;
+}
+.review-author{
+  font-size: 13px;
+}
+
+/* FIX: reviews text smaller + no clipping */
+.review-text{
+  height: auto !important;
+  overflow: visible !important;
+}
+.review-text p{
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+.review-author{
+  font-size: 12px !important;
+}
+
+/* FIX popular badge position */
+.price-card{
+  position: relative;
+}
+
+.price-badge{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  left: auto;
+  transform: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+
+.reviews-toggle {
+  display: block;
+  margin: 40px auto 0;
+  padding: 14px 32px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.reviews-toggle:hover {
+  background: #f2f2f2;
+}
+
+
+
+
+
+
+/* === Reviews dropdown (minimal, so стили отзывов одинаковые) === */
+.reviews-hidden { 
+  display: none;
+  margin-top: 0;
+}
+.reviews-hidden.is-open { 
+  display: block;
+}
+
+/* =========================
+   REVIEWS — DESKTOP FULLSCREEN (FINAL OVERRIDE)
+   3 колонки × 2 отзыва, блок заполняет весь экран на десктопе.
+   Мобилку не трогаем.
+========================= */
+@media (min-width: 901px){
+  /* секция на весь экран */
+  .section.reviews{
+    min-height: 100vh !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* контейнер во всю ширину экрана */
+  .section.reviews > .container{
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 64px !important;
+    padding-right: 64px !important;
+  }
+
+  .section.reviews .section-title{
+    margin: 0 0 36px 0 !important;
+  }
+
+  /* 3×2 сетка карточек на всю высоту */
+  .section.reviews .reviews-grid{
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+    height: calc(100vh - 160px) !important; /* заголовок + отступы */
+  }
+
+  /* показываем 6 отзывов: 2 первых + 4 из скрытых */
+  .section.reviews .reviews-hidden{ display: contents !important; }
+  .section.reviews .reviews-hidden .review-row:nth-child(n+5){ display: none !important; }
+  .section.reviews .reviews-toggle{ display: none !important; }
+
+  /* карточка */
+  .section.reviews .review-row{
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 22px !important;
+    border: 1px solid rgba(255,255,255,.15) !important;
+    border-bottom: 1px solid rgba(255,255,255,.15) !important;
+    grid-template-columns: 130px 1fr !important;
+    gap: 18px !important;
+    align-items: center !important;
+  }
+
+  .section.reviews .review-image{
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  .section.reviews .review-text{
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+/* =========================
+   FOOTER BACKGROUND + FADE (FINAL OVERRIDE)
+========================= */
+
+.footer.footer--bg{
+  position: relative !important;
+  overflow: hidden !important;
+  background: #000 !important;
+  /* убираем стандартную «полосу»/границу и переносим отступы внутрь */
+  border-top: none !important;
+  padding: 0 !important;
+}
+
+.footer.footer--bg::before{
+  content: "";
+  position: absolute;
+  inset: -1px; /* небольшой запас, чтобы не было 1px швов */
+  background: url("../assets/images/footer-bg.png") top center/cover no-repeat;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.footer.footer--bg::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* плавный уход в чёрный сверху */
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0,0,0,0.85) 25%,
+    rgba(0,0,0,0.4) 45%,
+    rgba(0,0,0,0) 65%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footer.footer--bg .footer-inner{
+  position: relative;
+  z-index: 2;
+
+  /* делаем футер одной колонкой по центру */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  /* реальные отступы футера */
+  padding: 120px 0 24px !important;
+  gap: 10px;
+}
+
+.footer.footer--bg .footer-inner > *{
+  margin: 0 !important;
+}
+
+.footer.footer--bg .footer-legal{
+  max-width: 760px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+.about-list {
+  text-align: center;
+  list-style-position: inside;
+}
+/* ===== ABOUT strict (SAFE OVERRIDE) ===== */
+.about { padding: 64px 0; }
+
+.about .about-title{
+  font-size: clamp(28px, 4.8vw, 44px);
+  font-weight: 800;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  text-align: center;
+}
+
+.about .about-main{
+  max-width: 620px;
+  margin: 0 auto 26px;
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: .86;
+  text-align: center;
+}
+
+.about .about-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 22px;
+  max-width: 620px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about .about-list li{
+  margin: 0;                 /* важно, чтобы не было лишних отступов */
+  padding: 14px 16px;
+  font-size: 16px;
+  line-height: 1.35;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: .9;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+}
+
+.about .about-note{
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: .72;
+  text-align: center;
+}
+
+/* если где-то глобально включен uppercase на всё внутри секций */
+.about * { text-transform: none; }
+.hero-subtitle{
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.3;
+  max-width: 680px;
+  margin: 14px auto 0;
+  opacity: .9;
+}
+.hero-subtitle{
+  font-size: clamp(22px, 3.2vw, 32px);
+}
+/* ===== SECTION SYSTEM ===== */
+.section{
+  padding: 72px 0;
+}
+
+.section-wrap{
+  /* ширину задаёт .container (единая сетка для всех секций) */
+  width: 100%;
+  text-align: center;
+}
+
+.section-title{
+  font-size: clamp(28px, 4.8vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.section-desc{
+  width: 100%;
+  margin: 0 auto 32px;
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: .85;
+}
+
+.section-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 28px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.section-list li{
+  padding: 16px 18px;
+  font-size: 16px;
+  line-height: 1.35;
+  background: rgba(255,255,255,.03);
+  border: 1px solid #d4af37;
+  border-radius: 14px;
+  opacity: .9;
+}
+
+.section-note{
+  font-size: 15px;
+  opacity: .7;
+  max-width: none;
+  width: 100%;
+  margin: 0 auto;
+}
+.course{
+  display: flex;
+  justify-content: center;
+}
+
+.course > *{
+  width: min(640px, calc(100% - 32px));
+  width: 100%;
+}
+
+
+}
+
+
+/* =========================
+   GOLD EDGE FLOW (FLOW CARD)
+========================= */
+.price-card.featured{
+  position: relative;
+  border-radius: 16px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+/* edge-only flowing gold */
+.price-card.featured::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  padding:2px; /* border thickness */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,200,80,.15),
+      rgba(255,215,120,.95),
+      rgba(255,235,160,.25),
+      rgba(255,180,60,.95),
+      rgba(255,200,80,.15)
+    );
+  background-size: 300% 100%;
+  animation: gold-edge-flow 3s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events:none;
+}
+
+/* keep content above */
+.price-card.featured > *{
+  position:relative;
+  z-index:1;
+}
+
+@keyframes gold-edge-flow{
+  from { background-position:   0% 50%; }
+  to   { background-position: 300% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .price-card.featured::before{ animation:none; }
+}
+
+
+
+.price-card .price-badge{
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  z-index: 3;
+}
+
+/* ensure gold border stays behind badge */
+.price-card.featured::before{
+  z-index: 1;
+}
+
+
+/* =========================
+   FIX: POPULAR BADGE POSITION (INSIDE)
+========================= */
+.price-card{
+  position: relative;
+}
+
+.price-card .price-badge{
+  position: absolute;
+  top: 12px;       /* inside the frame */
+  right: 12px;
+  z-index: 3;
+}
+
+/* ensure gold border stays behind badge */
+.price-card.featured::before{
+  z-index: 1;
+}
+
+
+/* =========================
+   WIDTH SYSTEM
+   Mobile: nice readable blocks (640px max)
+   Desktop: match PRICING card width (FLOW)
+========================= */
+:root{
+  /* base readable width */
+  --rect-w: min(640px, calc(100% - 32px));
+  /* pricing container width equals .container */
+  --pricing-container-w: min(1100px, calc(100% - 32px));
+  --pricing-card-w: var(--pricing-container-w); /* mobile (1 column) */
+}
+
+/* pricing grid becomes 3 columns at 901px, gap is 16px => 2 gaps total 32px */
+@media (min-width: 901px){
+  :root{
+    --pricing-card-w: calc((var(--pricing-container-w) - 32px) / 3);
+    --rect-w: var(--pricing-card-w); /* desktop: match FLOW width */
+  }
+}
+
+/* Apply unified width ONLY to rectangle blocks (do NOT touch containers) */
+.about .about-list,
+.section-list,
+.course-list,
+.modules .faq-list,
+.faq .faq-list,
+.modules .modules-accordion,
+.reviews .reviews-grid,
+.reviews .reviews-list,
+.reviews .reviews-wrap{
+  width: var(--rect-w) !important;
+  max-width: var(--rect-w) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Ensure children fill the block */
+.about .about-list li,
+.section-list li,
+.course-list li,
+.modules .faq-item,
+.faq .faq-item,
+.reviews .review-item,
+.reviews .review-card{
+  width: 100% !important;
+}
+/* ===== SECTION DIVIDER (STRICT GOLD) ===== */
+
+.section-divider{
+  width: 100%;
+  height: 1px;
+  background-color: #c9a44a;
+  opacity: 0.6;
+}
+
+/* если используешь общий container */
+.section-divider .container{
+  height: 1px;
+}
+
+
+/* revert gold lines only in 'Для кого этот курс' section */
+.section:not(.modules):not(.pricing):not(.reviews):not(.faq) [style],
+.section:not(.modules):not(.pricing):not(.reviews):not(.faq) {
+  --border: rgba(255,255,255,.14);
+}
+
+
+/* === REMOVE GOLD BORDERS IN 'ДЛЯ КОГО ЭТОТ КУРС' === */
+.section.about *,
+.section.about {
+  border-color: rgba(255,255,255,.14) !important;
+  outline-color: rgba(255,255,255,.14) !important;
+}
+
+
+/* === NO GOLD BORDERS IN 'ДЛЯ КОГО ЭТОТ КУРС' SECTION === */
+.section.forwho{
+  --border: rgba(255,255,255,.14) !important;
+}
+.section.forwho .section-list li,
+.section.forwho .section-list{
+  border-color: rgba(255,255,255,.14) !important;
+}
+
+
+/* === WHITE BUTTONS TEXTURE OVERLAY === */
+.btn,
+.button,
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before,
+.button::before,
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/images/button-texture.png") center/cover no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+
+/* stronger texture buttons */
+.btn-strong::before{
+  opacity:0.15 !important;
+}
+
+
+/* === FLOW / PRO: subtle art background (does not affect layout/animations) === */
+.pricing .price-card.flow{
+  background-image:
+    linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+    url("../assets/images/flow-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pricing .price-card.pro{
+  background-image:
+    linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+    url("../assets/images/pro-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* === BASE plan: subtle gold outline === */
+.pricing .price-card:first-child{
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+
+/* === FANFLOW header: opacity + grain === */
+.hero-title{
+  position: relative;
+  opacity: 0.85;
+}
+
+.hero-title::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("../assets/images/noise.jpg");
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+
+
+/* === Desktop: About + ForWho side-by-side (mobile untouched) === */
+.intro-split{ display:block; }
+@media (min-width: 992px){
+  .intro-split{
+    display:grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .intro-split > section{
+    margin: 0;
+  }
+  /* remove extra top spacing so blocks align nicely */
+  .intro-split .about{ padding-bottom: 0; }
+  .intro-split .forwho{ padding-top: 0; }
+}
+
+
+/* === Desktop wide containers + aligned split layout (mobile untouched) === */
+@media (min-width: 992px){
+  .container{
+    width: min(1400px, calc(100% - 80px));
+  }
+  .intro-split{
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* make both columns start from same left edge (no centered blocks) */
+  .intro-split .about-wrap,
+  .intro-split .section-wrap{
+    text-align: left;
+  }
+
+  /* override the global "rect width" limiter inside this split */
+  .intro-split .about-list,
+  .intro-split .section-list{
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* let list items span the whole column */
+  .intro-split .about-list li,
+  .intro-split .section-list li{
+    width: 100% !important;
+  }
+
+  /* align headings */
+  .intro-split .about-title,
+  .intro-split .section-title{
+    margin-top: 0;
+  }
+}
+
+
+/* === Desktop: parallel columns with equal side padding === */
+@media (min-width: 992px){
+  .intro-split{
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .intro-split{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ensure equal inner alignment */
+  .intro-split .about-wrap,
+  .intro-split .section-wrap{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/* === Desktop: Modules in 3 columns like pricing (mobile untouched) === */
+@media (min-width: 992px){
+  .modules .modules-accordion{
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    align-items: start;
+  }
+
+  .modules .modules-accordion .faq-item{
+    height: fit-content;
+  }
+
+  /* keep button/answer full width inside each card */
+  .modules .modules-accordion .faq-question,
+  .modules .modules-accordion .faq-answer{
+    width: 100%;
+  }
+}
+
+
+/* === Desktop: equal-height module cards + perfectly centered text/padding (mobile untouched) === */
+@media (min-width: 992px){
+  .modules .modules-accordion{
+    align-items: stretch;
+    grid-auto-rows: 1fr; /* equal heights per row */
+  }
+
+  .modules .modules-accordion .faq-item{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modules .modules-accordion .faq-question{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 26px; /* equal top/bottom/left/right */
+  }
+
+  .modules .modules-accordion .faq-answer{
+    padding: 26px; /* equal top/bottom/left/right */
+    text-align: center;
+  }
+
+  .modules .module-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .modules .module-list li{
+    text-align: center;
+    width: 100%;
+    max-width: 38ch;
+    margin: 0 auto;
+  }
+}
+
+
+/* === Desktop: hide accordion preview lines (modules) === */
+@media (min-width: 992px){
+  .modules .modules-accordion .faq-item{
+    overflow: hidden; /* nothing leaks out */
+  }
+
+  /* closed state: answers fully hidden */
+  .modules .modules-accordion .faq-item:not(.open) .faq-answer{
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  /* open state: restore spacing */
+  .modules .modules-accordion .faq-item.open .faq-answer{
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+
+/* === Desktop: accordion works + no preview lines (uses .active + JS height) === */
+@media (min-width: 992px){
+  .modules .modules-accordion .faq-item{
+    overflow: hidden;
+  }
+
+  .modules .modules-accordion .faq-answer{
+    overflow: hidden;
+    height: 0;           /* default closed */
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: height .25s ease, padding .25s ease;
+  }
+
+  .modules .modules-accordion .faq-item.active .faq-answer{
+    /* JS sets exact height inline; we only restore padding */
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+}
+
+
+/* === FIX OVERRIDES: use .active (JS) and kill legacy .open/max-height rules === */
+@media (min-width: 992px){
+  /* neutralize any max-height/opacity rules applied elsewhere */
+  .modules .modules-accordion .faq-item .faq-answer{
+    max-height: none !important;
+  }
+
+  .modules .modules-accordion .faq-item:not(.active) .faq-answer{
+    height: 0 !important;
+    opacity: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .modules .modules-accordion .faq-item.active .faq-answer{
+    opacity: 1 !important;
+    overflow: hidden;
+    /* height is set inline by JS */
+    padding-top: 26px !important;
+    padding-bottom: 26px !important;
+  }
+}
+
+
+/* === Desktop only: remove background image from module buttons === */
+@media (min-width: 992px){
+  .modules .modules-accordion .faq-question{
+    background-image: none !important;
+    background: rgba(0,0,0,0.6); /* чистый фон без картинки */
+  }
+}
+
+
+/* === Desktop only: remove texture overlay (global button::before) from module accordion buttons === */
+@media (min-width: 992px){
+  .modules .modules-accordion .faq-question::before{
+    content: none !important;
+    background: none !important;
+    opacity: 0 !important;
+  }
+}
+
+
+/* === Desktop FAQ: 2 columns, 4 accordions per column (mobile untouched) === */
+@media (min-width: 992px){
+  .faq .faq-list{
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 48px;
+    align-items: start;
+  }
+
+  .faq .faq-item{
+    height: fit-content;
+  }
+}
+
+
+/* === Desktop FAQ: restore side paddings to match containers === */
+@media (min-width: 992px){
+  .faq .container{
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+
+/* === Desktop FAQ: equal side paddings + equal card widths + centered text (mobile untouched) === */
+@media (min-width: 992px){
+  /* equal outer gutters like other desktop blocks */
+  .faq .container{
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  /* keep grid equal */
+  .faq .faq-list{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .faq .faq-item{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* center question text; keep plus icon on the right */
+  .faq .faq-question{
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center !important;
+    padding: 26px !important; /* equal padding all sides */
+    gap: 0 !important;
+  }
+
+  .faq .faq-question > span:first-child{
+    display: block;
+    max-width: 42ch;
+    margin: 0 auto;
+  }
+
+  .faq .faq-plus{
+    position: absolute;
+    right: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* answer padding equal on all sides */
+  .faq .faq-answer{
+    padding-left: 26px !important;
+    padding-right: 26px !important;
+    text-align: center;
+  }
+}
+
+
+/* === Desktop FAQ: equal left/right gutters & truly equal columns === */
+@media (min-width: 992px){
+  /* container defines gutters, list itself has none */
+  .faq .faq-list{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 32px; /* symmetric gap */
+  }
+
+  /* make sure questions have symmetric inner padding */
+  .faq .faq-question{
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  /* keep plus visually aligned without adding extra right space */
+  .faq .faq-plus{
+    right: 32px;
+  }
+}
+
+
+/* === Desktop FAQ: hard-center section title and equal outer gutters === */
+@media (min-width: 992px){
+  .faq .container{
+    width: min(1400px, calc(100% - 80px)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+    box-sizing: border-box;
+  }
+
+  .faq .section-title{
+    width: 100%;
+    text-align: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* ensure grid respects container and doesn't add asymmetric padding */
+  .faq .faq-list{
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    justify-items: stretch;
+  }
+}
+
+
+/* headings font */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.reviews-title {
+  font-family: 'CCUltimatum', sans-serif !important;
+}
+
+
+/* main brand word */
+.hero-title {
+  font-family: 'CCUltimatum', sans-serif !important;
+}
+
+
+/* For who section: safe centering + extra text (no layout hacks) */
+.forwho .forwho-title,
+.forwho .forwho-lead,
+.forwho .forwho-tail{
+  text-align: center;
+}
+
+.forwho .forwho-lead{
+  max-width: 780px;
+  margin: 14px auto;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.forwho .forwho-tail{
+  max-width: 820px;
+  margin: 14px auto 0;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* keep list readable but centered block */
+.forwho .section-list{
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* HERO TIMER OFFER */
+.hero-offer{
+  margin-top: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.hero-free{
+  font-family: 'CCUltimatum', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+  max-width: 900px;
+}
+
+.hero-timer{
+  font-family: 'CCUltimatum', sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 8vw, 110px);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.hero-timer .tSep{
+  opacity: 0.55;
+  margin: 0 6px;
+}
+
+.hero-timer .tSS{
+  background: linear-gradient(90deg, #b7842a 0%, #f5d27a 45%, #b7842a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-ctas{
+  width: min(420px, 100%);
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.hero-btn.hero-btn-secondary,
+.hero-btn.hero-btn-primary{
+  width: 100%;
+  justify-content: center;
+}
+
+/* keep existing .hero-btn styling but allow variant feel */
+.hero-btn.hero-btn-secondary{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.hero-btn.hero-btn-primary{
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* HERO CTA sizes (match Подробнее width) */
+.hero-btn-big{
+  width: min(420px, 100%);
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+}
+.hero-bottom{
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+/* HERO LAYOUT LIKE MOCK */
+.hero-layout{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:18px;
+}
+
+.hero-subtitle{
+  opacity:.9;
+}
+
+.hero-timer{
+  font-family:'CCUltimatum',sans-serif;
+  font-weight:800;
+  font-size:clamp(64px,10vw,140px);
+  line-height:1;
+  letter-spacing:.04em;
+}
+
+.hero-timer .tSep{opacity:.5;margin:0 6px}
+
+.hero-timer .tSS{
+  background:linear-gradient(90deg,#b7842a,#f5d27a,#b7842a);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-free{
+  opacity:.9;
+  line-height:1.4;
+  max-width:520px;
+}
+
+.hero-btn-big{
+  width:min(360px,100%);
+  justify-content:center;
+}
+
+
+/* --- HERO: align all content to bottom --- */
+.hero .hero-layout{
+  min-height: calc(100vh - 140px);
+  justify-content: flex-end;
+  padding-bottom: 56px;
+}
+
+/* on very small screens, keep enough breathing room */
+@media (max-width: 420px){
+  .hero .hero-layout{
+    padding-bottom: 40px;
+  }
+}
+
+/* --- HERO buttons: same width on desktop + mobile, and both white --- */
+.hero .hero-layout .hero-btn-big{
+  width: min(360px, 92vw);
+  max-width: 360px;
+}
+
+.hero .hero-layout .hero-btn{
+  width: auto;
+  display: inline-flex;
+}
+
+/* make "Подробнее" white as well */
+.hero .hero-layout .hero-btn-secondary{
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 0 !important;
+}
+
+/* keep primary white too (in case global styles change) */
+.hero .hero-layout .hero-btn-primary{
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 0 !important;
+}
+
+
+/* HERO mobile top/bottom layout */
+.hero-top, .hero-bottomGroup{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-bottomGroup{
+  gap: 16px;
+}
+
+.hero-free-urgency{
+  max-width: 560px;
+}
+
+@media (max-width: 768px){
+  .hero .hero-layout{
+    min-height: calc(100vh - 120px);
+    justify-content: space-between;
+    padding-top: 46px;
+    padding-bottom: 48px;
+    gap: 0;
+  }
+  .hero-top{
+    align-items: center;
+  }
+  .hero-bottomGroup{
+    align-items: center;
+  }
+}
+
+
+/* HERO urgency text: different font + bigger */
+.hero-free-urgency{
+  font-family: 'CCUltimatum', sans-serif;
+  font-weight: 800;
+  font-size: clamp(16px, 4.5vw, 22px);
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 1024px){
+  .hero-free-urgency{
+    font-size: 24px;
+  }
+}
+
+
+/* HERO subtitle: same font as FANFLOW, bigger */
+.hero-subtitle{
+  font-family: 'CCUltimatum', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 4.8vw, 26px);
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  opacity: 0.95;
+}
+
+@media (min-width: 1024px){
+  .hero-subtitle{
+    font-size: 28px;
+  }
+}
+
+
+/* Push hero bottom group almost to bottom */
+@media (max-width: 768px){
+  .hero .hero-layout{
+    padding-bottom: 20px;
+  }
+  .hero-bottomGroup{
+    margin-top: auto;
+    padding-bottom: 10px;
+  }
+}
+
+
+/* Flush hero bottom group to bottom edge */
+@media (max-width: 768px){
+  .hero .hero-layout{
+    min-height: 100vh;
+    padding-bottom: 6px;
+  }
+  .hero-bottomGroup{
+    margin-top: auto;
+    padding-bottom: 0;
+  }
+}
+
+
+/* Soften bottom spacing (not flush) */
+@media (max-width: 768px){
+  .hero .hero-layout{
+    padding-bottom: 32px;
+  }
+  .hero-bottomGroup{
+    margin-top: auto;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* FORWHO list centered */
+.forwho .section-list{
+  align-items: center;
+}
+.forwho .section-list li{
+  text-align: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* reduce side padding inside items on small screens */
+@media (max-width: 768px){
+  .forwho .section-list li{
+    padding: 14px 14px;
+  }
+}
+
+/* HERO "Забрать" button: flowing gold edge like FLOW */
+.hero-btn-gold{
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-btn-gold::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 0;
+  padding: 2px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,200,80,.15),
+      rgba(255,215,120,.95),
+      rgba(255,235,160,.25),
+      rgba(255,180,60,.95),
+      rgba(255,200,80,.15)
+    );
+  background-size: 300% 100%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gold-edge-flow 4s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-btn-gold{
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-btn-gold::before{ animation:none; }
+}
+
+
+/* HERO CTA: wider, bigger text, black with white text */
+.hero .hero-btn-primary,
+.hero .hero-btn-primary.hero-btn{
+  background: #000 !important;
+  color: #fff !important;
+  padding: 18px 40px !important;
+  font-size: 18px !important;
+  letter-spacing: 0.02em;
+}
+
+.hero .hero-btn-big{
+  width: min(420px, 92vw) !important;
+  max-width: 420px !important;
+}
+
+/* ABOUT list: make blocks same as FORWHO cards */
+.intro-split .about-list{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 auto 28px;
+}
+
+.intro-split .about-list li{
+  padding: 16px 18px !important;
+  font-size: 16px !important;
+  line-height: 1.35;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  background: rgba(255,255,255,.03);
+  border: 1px solid #d4af37;
+  border-radius: 14px;
+  opacity: .9;
+}
+
+@media (max-width: 768px){
+  .intro-split .about-list li{
+    padding: 14px 14px !important;
+  }
+}
+
+.intro-split .forwho .section-list{align-items: stretch;}
+
+
+/* subtext under agency */
+.forwho-sub{
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: .8;
+}
+
+
+/* subtext UNDER the card (not inside) */
+.forwho-sub-under{
+  max-width: 520px;
+  margin: 10px auto 22px;
+  text-align: center;
+}
+
+
+/* spacing between lead text and first forwho item */
+.forwho .forwho-lead{
+  margin-bottom: 28px;
+}
+
+/* match spacing style from about section */
+.forwho .section-list{
+  margin-top: 28px;
+}
+
+
+/* slightly more spacing under 'Будущие OnlyFans-агентства' */
+.forwho-sub-under{
+  margin-top: 14px; /* was ~10px */
+}
+
+
+/* =========================
+   REVIEWS — DESKTOP SLIDER (3 cards per view, 8 total)
+   Mobile layout untouched
+========================= */
+@media (max-width: 900px){
+  .reviews-desktop-slider{ display:none; }
+}
+
+@media (min-width: 901px){
+  /* full-screen section on desktop */
+  #reviews{
+    min-height: 100vh;
+    padding: 48px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  #reviews .container{
+    width: 100%;
+    max-width: none;
+  }
+
+  /* hide mobile list + toggle on desktop */
+  .reviews-mobile,
+  #reviewsToggle{
+    display: none !important;
+  }
+
+  .reviews-desktop-slider{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .reviews-viewport{
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .reviews-track{
+    display: flex;
+    gap: 24px;
+    will-change: transform;
+  }
+
+  /* each slide: 3 per row */
+  .reviews-track .review-row{
+    flex: 0 0 calc((100% - 48px) / 3);
+    border-bottom: none;
+    padding: 24px;
+    border: 1px solid rgba(212, 175, 55, .35);
+    border-radius: 14px;
+    background: rgba(0,0,0,.15);
+  }
+
+  /* внутри карточки сохраняем сетку фото+текст */
+  .reviews-track .review-image{
+    width: 140px;
+    height: 140px;
+  }
+
+  .reviews-track .review-text{
+    aspect-ratio: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  .reviews-nav{
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, .6);
+    background: rgba(0,0,0,.25);
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .reviews-nav:disabled{
+    opacity: .35;
+    cursor: default;
+  }
+}
+@media (min-width: 1024px) {
+  /* секция отзывов (подхватываем популярные варианты классов/ID) */
+  #reviews,
+  .reviews,
+  .reviews-section,
+  .section-reviews {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+
+    height: auto !important;
+    min-height: unset !important;
+
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+  }
+
+  /* если внутри есть обёртка/контейнер, которая добавляет воздух */
+  #reviews .container,
+  .reviews .container,
+  .reviews-section .container,
+  .section-reviews .container,
+  #reviews .wrapper,
+  .reviews .wrapper,
+  .reviews-section .wrapper,
+  .section-reviews .wrapper,
+  #reviews .inner,
+  .reviews .inner,
+  .reviews-section .inner,
+  .section-reviews .inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
+    transform: none !important;
+  }
+
+  /* заголовок часто имеет огромный margin */
+  #reviews h1, #reviews h2, #reviews .title,
+  .reviews h1, .reviews h2, .reviews .title,
+  .reviews-section h1, .reviews-section h2, .reviews-section .title,
+  .section-reviews h1, .section-reviews h2, .section-reviews .title {
+    margin-top: 0 !important;
+    margin-bottom: 24px !important;
+  }
+}
+/* ===== FIX: секция "Для кого создан FANFLOW" (DESKTOP ONLY) ===== */
+@media (min-width: 1024px) {
+
+  /* Центруем саму секцию */
+  .section.forwho {
+    display: block;
+  }
+
+  /* Центруем контейнер */
+  .section.forwho .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Заголовок и подзаголовок */
+  .section.forwho h2,
+  .section.forwho p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Список блоков */
+  .section.forwho .section-list {
+    max-width: 900px;
+    margin: 40px auto;
+  }
+
+  .section.forwho .section-list li {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Нижний текст */
+  .section.forwho .forwho-sub-under {
+    max-width: 900px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+}
+/* ===== BALANCE: нормальные межстрочные (DESKTOP ONLY) ===== */
+@media (min-width: 1024px) {
+
+  /* Заголовок */
+  .section.forwho h2 {
+    line-height: 1.12 !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Основной текст */
+  .section.forwho p {
+    line-height: 1.32 !important;
+    margin-bottom: 26px !important;
+  }
+
+  /* Пункты списка */
+  .section.forwho .section-list li {
+    line-height: 1.28 !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  /* Нижний поясняющий текст */
+  .section.forwho .forwho-sub-under {
+    line-height: 1.32 !important;
+    margin-top: 26px !important;
+  }
+}
+/* ===== EQUAL WIDTH: два текстовых блока (DESKTOP ONLY) ===== */
+@media (min-width: 1024px) {
+
+  /* БЛОК 1 — НЕ ПРОСТО ONLYFANS */
+  .section.hero,
+  .section.intro,
+  .section.about {
+    width: 100%;
+  }
+
+  .section.hero .container,
+  .section.intro .container,
+  .section.about .container {
+    max-width: 900px;          /* ключевая цифра */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  /* БЛОК 2 — ДЛЯ КОГО СОЗДАН FANFLOW */
+  .section.forwho {
+    width: 100%;
+  }
+
+  .section.forwho .container {
+    max-width: 900px;          /* ТА ЖЕ САМАЯ */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+}
+.forwho-sub.forwho-sub-under {
+  font-style: italic;
+  color: #C9A24D;     /* золото */
+}
+/* Цитаты — золото + курсив */
+.about-note,
+.forwho-sub.forwho-sub-under {
+  font-style: italic;
+  color: #C9A24D;      /* золото */
+  line-height: 1.3;
+}
+/* MOBILE: аккуратные боковые отступы для цитат */
+@media (max-width: 767px) {
+  .about-note,
+  .forwho-sub.forwho-sub-under {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
