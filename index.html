@@ -1,5 +1,35 @@
 <!doctype html>
 <html lang="ru">
+  <!-- Facebook Pixel Code + Lead на кнопку -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '876382224922497'); // <- вставь сюда свой Pixel ID
+  fbq('track', 'PageView');
+
+  // Отслеживание клика на кнопки с классом btn-white
+  document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.btn-white');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        fbq('track', 'Lead');
+      });
+    });
+  });
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=876382224922497&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -223,9 +253,8 @@
                 </div>
                 <div class="review-text">
                   <p>
-                    Благодаря <strong>FANFLOW</strong> я вышла на доход около
-                    <strong>1500$ уже на следующий месяц</strong>.
-                    Очень помогла поддержка и чёткая система
+                    Уже имела опыт с ОФ, но на FANFLOW нашла крутую инфу по трафику, 
+                    заливаю рекламу на Reddit)) 
                   </p>
                   <span class="review-author">Алина, 23 года</span>
                 </div>
@@ -236,16 +265,15 @@
                 </div>
                 <div class="review-text">
                   <p>
-                    Благодаря <strong>FANFLOW</strong> я вышла на доход около
-                    <strong>1500$ уже на следующий месяц</strong>.
-                    Очень помогла поддержка и чёткая система
+                    Получила крутые скрипты для общения с фанами, 
+                    внедрила — продажи выросли, появились постоянники!
                   </p>
                   <span class="review-author">Мария, 26 лет</span>
                 </div>
               </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-1.jpg" alt="Отзыв">
+                    <img src="assets/images/review-3.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
                     <p>Начала с нуля, без опыта. Через 3 недели появились первые подписчики и стабильный доход.</p>
@@ -254,47 +282,48 @@
                 </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-2.jpg" alt="Отзыв">
+                    <img src="assets/images/review-4.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
-                    <p>Курс дал структуру и уверенность. Поняла, что делать каждый день.</p>
+                    <p>Фанфлоу дал систему, как продюсировать девочек. Собрала своё агентство, увидела первый доход</p>
                     <span class="review-author">Дарья, 27 лет</span>
                   </div>
                 </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-1.jpg" alt="Отзыв">
+                    <img src="assets/images/review-5.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
-                    <p>Поддержка кураторов — огромный плюс. Всегда отвечали и помогали.</p>
+                    <p>Поддержка кураторов — огромный плюс. Душевный чат, можно поугорать. Всегда отвечали и помогали.</p>
                     <span class="review-author">Анна, 22 года</span>
                   </div>
                 </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-2.jpg" alt="Отзыв">
+                    <img src="assets/images/review-6.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
-                    <p>Без лица и без опыта получилось выйти на доход. Это реально работает.</p>
+                    <p>Без лица и без опыта получилось выйти на доход. Было страшно))</p>
                     <span class="review-author">Ксения, 29 лет</span>
                   </div>
                 </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-1.jpg" alt="Отзыв">
+                    <img src="assets/images/review-7.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
-                    <p>Очень понятная система, без воды. Всё по шагам.</p>
-                    <span class="review-author">Ольга, 25 лет</span>
+                    <p>Фанфлоу дал всю систему для продюсирования. 
+                      Уже собираю команду, модели стабильно зарабатывают — вижу первые сдвиги в +</p>
+                    <span class="review-author">Антон, 25 лет</span>
                   </div>
                 </div>
           <div class="review-row">
                   <div class="review-image">
-                    <img src="assets/images/review-2.jpg" alt="Отзыв">
+                    <img src="assets/images/review-8.jpg" alt="Отзыв">
                   </div>
                   <div class="review-text">
-                    <p>Лучшее вложение за последний год. Окупилось в первый месяц.</p>
-                    <span class="review-author">Наталья, 31 год</span>
+                    <p>Лучшее вложение за последний год. Взял 2х девушек на ведение.</p>
+                    <span class="review-author">Олег, 31 год</span>
                   </div>
                 </div>
         </div>
@@ -313,8 +342,7 @@
       </div>
       <div class="review-text">
         <p>
-          Благодаря <strong>FANFLOW</strong> я вышла на доход около
-          <strong>1500$ уже на следующий месяц</strong>.
+          Работать сидя на пляже, ну не мечта ли))
           Очень помогла поддержка и чёткая система
         </p>
         <span class="review-author">Алина, 23 года</span>
@@ -327,9 +355,7 @@
       </div>
       <div class="review-text">
         <p>
-          Благодаря <strong>FANFLOW</strong> я вышла на доход около
-          <strong>1500$ уже на следующий месяц</strong>.
-          Очень помогла поддержка и чёткая система
+          Вышла на нормальный доход, уволилась с должности бариста, ни о чем не жалею))
         </p>
         <span class="review-author">Мария, 26 лет</span>
       </div>
@@ -340,7 +366,7 @@
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-1.jpg" alt="Отзыв">
+          <img src="assets/images/review-3.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
           <p>Начала с нуля, без опыта. Через 3 недели появились первые подписчики и стабильный доход.</p>
@@ -350,51 +376,51 @@
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-2.jpg" alt="Отзыв">
+          <img src="assets/images/review-4.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
-          <p>Курс дал структуру и уверенность. Поняла, что делать каждый день.</p>
+          <p>Курс дал понимание что делать и уверенность. Ищу чатеров, сама не справляюсь уже)</p>
           <span class="review-author">Дарья, 27 лет</span>
         </div>
       </div>
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-1.jpg" alt="Отзыв">
+          <img src="assets/images/review-5.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
-          <p>Поддержка кураторов — огромный плюс. Всегда отвечали и помогали.</p>
+          <p>Поддержка кураторов — огромный плюс. Всегда отвечали и помогали. Чат учеников это отдельное хаха)</p>
           <span class="review-author">Анна, 22 года</span>
         </div>
       </div>
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-2.jpg" alt="Отзыв">
+          <img src="assets/images/review-6.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
-          <p>Без лица и без опыта получилось выйти на доход. Это реально работает.</p>
+          <p>Без лица и без опыта получилось выйти на доход. Было реально стремно))</p>
           <span class="review-author">Ксения, 29 лет</span>
         </div>
       </div>
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-1.jpg" alt="Отзыв">
+          <img src="assets/images/review-7.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
-          <p>Очень понятная система, без воды. Всё по шагам.</p>
-          <span class="review-author">Ольга, 25 лет</span>
+          <p>Очень понятная система! Уболтал знакомую, теперь веду ее профиль и зарабатываем вместе</p>
+          <span class="review-author">Антон, 25 лет</span>
         </div>
       </div>
 
       <div class="review-row">
         <div class="review-image">
-          <img src="assets/images/review-2.jpg" alt="Отзыв">
+          <img src="assets/images/review-8.jpg" alt="Отзыв">
         </div>
         <div class="review-text">
-          <p>Лучшее вложение за последний год. Окупилось в первый месяц.</p>
-          <span class="review-author">Наталья, 31 год</span>
+          <p>Лучшее вложение за последний год. Закрыл декабрь на 3200$)) Дальше - больше</p>
+          <span class="review-author">Олег, 31 год</span>
         </div>
       </div>
 
