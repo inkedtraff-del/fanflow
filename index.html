@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
   <!-- Facebook Pixel Code + Lead на кнопку -->
+<!-- Facebook Pixel Code + Lead на кнопку Telegram -->
 <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -11,15 +12,23 @@
   s.parentNode.insertBefore(t,s)}(window,document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
 
-  fbq('init', '876382224922497'); // <- вставь сюда свой Pixel ID
+  fbq('init', '876382224922497'); // <- твой Pixel ID
   fbq('track', 'PageView');
 
-  // Отслеживание клика на кнопки с классом btn-white
+  // Отслеживание клика на кнопки Telegram
   document.addEventListener('DOMContentLoaded', function() {
     var buttons = document.querySelectorAll('.btn-white');
     buttons.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        fbq('track', 'Lead');
+      btn.addEventListener('click', function(e){
+        e.preventDefault(); // отменяем мгновенный переход
+        var url = btn.href; // сохраняем ссылку
+
+        fbq('track', 'Lead'); // отправка события Lead
+
+        // Переход через 200ms, чтобы Pixel успел сработать
+        setTimeout(function(){
+          window.open(url, '_blank'); // открываем Telegram в новой вкладке
+        }, 200);
       });
     });
   });
@@ -29,6 +38,7 @@
        src="https://www.facebook.com/tr?id=876382224922497&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Facebook Pixel Code -->
+
 
 <head>
   <meta charset="utf-8" />
